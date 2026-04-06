@@ -13,26 +13,52 @@
 
 const TAG_CONFIG = {
   // ── Rol ──────────────────────────────────────────────
-  academico:     { label: "Académico",             color: "#059669", icon: "🎓", category: "Rol" },
-  pastor:        { label: "Pastor / Predicador",   color: "#7C3AED", icon: "⛪", category: "Rol" },
-  filosofo:      { label: "Filósofo",              color: "#9333EA", icon: "🧠", category: "Rol" },
+  academico:     { label: "Académico",             color: "#059669", icon: "🎓", category: "Rol",
+    description: "Investigador o profesor con formación académica formal en su campo de estudio." },
+  pastor:        { label: "Pastor / Predicador",   color: "#7C3AED", icon: "⛪", category: "Rol",
+    description: "Líder eclesiástico dedicado a la predicación, enseñanza y cuidado pastoral." },
+  filosofo:      { label: "Filósofo",              color: "#9333EA", icon: "🧠", category: "Rol",
+    description: "Pensador que emplea la lógica, la metafísica y la epistemología para analizar cuestiones teológicas." },
 
   // ── Posición Teológica ───────────────────────────────
-  trinitario:      { label: "Trinitario",          color: "#1D4ED8", icon: "🔺", category: "Posición" },
-  unitario:        { label: "Unitario Bíblico",    color: "#EA580C", icon: "1️⃣",  category: "Posición" },
-  musulman:        { label: "Musulmán",            color: "#15803D", icon: "☪️",  category: "Posición" },
-  mormon:          { label: "Mormón",              color: "#0E7490", icon: "📘", category: "Posición" },
-  agnostico:       { label: "Agnóstico",           color: "#6B7280", icon: "❓", category: "Posición" },
-  critico_secular: { label: "Crítico Secular",     color: "#78716C", icon: "🔬", category: "Posición" },
+  trinitario:      { label: "Trinitario",          color: "#1D4ED8", icon: "🔺", category: "Posición",
+    description: "Sostiene que Dios es una Trinidad: Padre, Hijo y Espíritu Santo — tres personas en una sola esencia divina. Doctrina definida en los concilios de Nicea (325) y Constantinopla (381)." },
+  unitario:        { label: "Unitario Bíblico",    color: "#EA580C", icon: "1️⃣",  category: "Posición",
+    description: "Afirma que solo el Padre es Dios en el sentido absoluto. Jesús es el Mesías e Hijo de Dios, pero no Dios mismo. Se basa en la lectura directa del texto bíblico sin filtros credales." },
+  musulman:        { label: "Musulmán",            color: "#15803D", icon: "☪️",  category: "Posición",
+    description: "Seguidor del Islam. Cree en un solo Dios (Alá) y en Jesús (Isa) como profeta, pero no como Dios ni como hijo de Dios." },
+  mormon:          { label: "Mormón",              color: "#0E7490", icon: "📘", category: "Posición",
+    description: "Miembro de La Iglesia de Jesucristo de los Santos de los Últimos Días. Cree en el Libro de Mormón como escritura adicional a la Biblia." },
+  agnostico:       { label: "Agnóstico",           color: "#6B7280", icon: "❓", category: "Posición",
+    description: "Considera que la existencia de Dios es incognoscible o que no hay suficiente evidencia para afirmarla o negarla con certeza." },
+  critico_secular: { label: "Crítico Secular",     color: "#78716C", icon: "🔬", category: "Posición",
+    description: "Estudia los textos religiosos con metodología académica secular, sin asumir la inspiración divina como premisa." },
+
+  // ── Soteriología ───────────────────────────────────────
+  calvinista:      { label: "Calvinista",          color: "#7E22CE", icon: "⚜️", category: "Soteriología",
+    description: "Sigue la tradición reformada de Juan Calvino. Enfatiza la soberanía absoluta de Dios en la salvación: elección incondicional, gracia irresistible y perseverancia de los santos (TULIP)." },
+  molinista:       { label: "Molinista",           color: "#6D28D9", icon: "🔄", category: "Soteriología",
+    description: "Posición teológica de Luis de Molina que reconcilia la soberanía de Dios con el libre albedrío humano mediante el 'conocimiento medio' — Dios conoce lo que cada persona haría libremente en cualquier circunstancia." },
+  ex_calvinista:   { label: "Ex-Calvinista",       color: "#DB2777", icon: "🔁", category: "Soteriología",
+    description: "Persona que antes sostuvo la teología calvinista pero la abandonó tras un proceso de estudio y reflexión. Suele ofrecer una perspectiva crítica desde la experiencia interna." },
+  provisionista:   { label: "Provisionista",       color: "#2563EB", icon: "🤲", category: "Soteriología",
+    description: "Posición soteriológica articulada por Leighton Flowers. Afirma que Dios provee salvación a todos, pero la fe genuina es la respuesta libre y no predeterminada del individuo. Se distingue tanto del calvinismo como del arminianismo." },
 
   // ── Enfoque Temático ──────────────────────────────────
-  cristianismo_primitivo: { label: "Cristianismo Primitivo", color: "#92400E", icon: "⛪", category: "Enfoque" },
-  soteriologia:           { label: "Soteriología",          color: "#7C3AED", icon: "✝️",  category: "Enfoque" },
-  critica_textual:        { label: "Crítica Textual",       color: "#0F766E", icon: "📜", category: "Enfoque" },
-  ateismo:                { label: "Ateísmo",               color: "#DC2626", icon: "⚡", category: "Enfoque" },
-  nueva_era:              { label: "Nueva Era",             color: "#A855F7", icon: "🔮", category: "Enfoque" },
-  griego:                 { label: "Griego / Hebreo",       color: "#0369A1", icon: "📖", category: "Enfoque" },
-  doctrina_dios:          { label: "Doctrina de Dios",      color: "#B45309", icon: "👑", category: "Enfoque" },
+  cristianismo_primitivo: { label: "Cristianismo Primitivo", color: "#92400E", icon: "⛪", category: "Enfoque",
+    description: "Estudio de las creencias, prácticas y comunidades cristianas de los primeros siglos (I–IV d.C.), antes de la consolidación del canon y los credos." },
+  soteriologia:           { label: "Soteriología",          color: "#7C3AED", icon: "✝️",  category: "Enfoque",
+    description: "Rama de la teología que estudia la doctrina de la salvación: cómo, por qué y a quién salva Dios." },
+  critica_textual:        { label: "Crítica Textual",       color: "#0F766E", icon: "📜", category: "Enfoque",
+    description: "Disciplina que analiza los manuscritos antiguos para reconstruir el texto original de la Biblia, comparando variantes entre copias." },
+  ateismo:                { label: "Ateísmo",               color: "#DC2626", icon: "⚡", category: "Enfoque",
+    description: "Enfoque o interacción con el ateísmo: puede ser la posición del referente, o que su trabajo se centra en responder al ateísmo." },
+  ex_newage:              { label: "Ex-New Age",            color: "#A855F7", icon: "🔮", category: "Enfoque",
+    description: "Ex-practicante de movimientos New Age. Ofrece análisis y crítica del misticismo, la ley de atracción, y las espiritualidades alternativas desde su experiencia personal." },
+  griego:                 { label: "Griego / Hebreo",       color: "#0369A1", icon: "📖", category: "Enfoque",
+    description: "Especialista en los idiomas originales de la Biblia: griego koiné (Nuevo Testamento) y/o hebreo bíblico (Antiguo Testamento)." },
+  doctrina_dios:          { label: "Doctrina de Dios",      color: "#B45309", icon: "👑", category: "Enfoque",
+    description: "Estudio de la naturaleza y atributos de Dios: ¿Es Dios una Trinidad? ¿Es Jesús Dios? Debate central entre trinitarios y unitarios." },
 
 };
 
@@ -104,7 +130,7 @@ const SCHOLARS = [
     shortDesc: "Filósofo · Trinitario",
     country: "🇺🇸",
     photo: "img/william-lane-craig.avif",
-    tags: ["filosofo", "trinitario", "ateismo", "doctrina_dios"],
+    tags: ["filosofo", "trinitario", "molinista", "ateismo", "doctrina_dios"],
     bio: {
       description: "Considerado uno de los filósofos de la religión más influyentes del mundo contemporáneo. Conocido por sus debates públicos con ateos prominentes y por su defensa del argumento cosmológico Kalam.",
       education: [
@@ -188,7 +214,7 @@ const SCHOLARS = [
     shortDesc: "Pastor · Trinitario",
     country: "🇺🇸",
     photo: "img/paul-washer.jpg",
-    tags: ["pastor", "trinitario", "soteriologia"],
+    tags: ["pastor", "trinitario", "calvinista", "soteriologia"],
     bio: {
       description: "Pastor, misionero y escritor estadounidense. Reconocido predicador itinerante conocido por su sermón 'Shocking Youth Message'. Fundó HeartCry Missionary Society para apoyar misioneros nativos en todo el mundo.",
       education: [
@@ -215,7 +241,7 @@ const SCHOLARS = [
     shortDesc: "Teólogo · Soteriólogo",
     country: "🇺🇸",
     photo: "img/leighton-flowers.jpg",
-    tags: ["pastor", "academico", "trinitario", "soteriologia"],
+    tags: ["pastor", "academico", "trinitario", "ex_calvinista", "provisionista", "soteriologia"],
     bio: {
       description: "Teólogo y profesor especializado en soteriología. Es el principal exponente del 'Provisionismo', una posición soteriológica que se opone al calvinismo desde una perspectiva no arminiana.",
       education: [
@@ -243,7 +269,7 @@ const SCHOLARS = [
     shortDesc: "Ex New Age · Discernimiento",
     country: "🇺🇸",
     photo: "img/melissa-dougherty.webp",
-    tags: ["trinitario", "nueva_era"],
+    tags: ["trinitario", "ex_newage"],
     bio: {
       description: "Apologista cristiana y ex practicante de New Age. Su experiencia personal le da una perspectiva única para analizar y refutar movimientos de espiritualidad alternativa desde una perspectiva bíblica.",
       education: [
@@ -354,7 +380,7 @@ const SCHOLARS = [
     shortDesc: "Académico · Septuaginta",
     country: "🇨🇦",
     photo: "img/joel-korytko.jpg",
-    tags: ["academico", "griego", "critica_textual"],
+    tags: ["academico", "ex_calvinista", "griego", "critica_textual"],
     bio: {
       description: "Erudito bíblico especializado en la Septuaginta (traducción griega del Antiguo Testamento). Su investigación se centra en cómo el traductor del Éxodo griego adaptó las leyes hebreas al contexto cultural greco-egipcio.",
       education: [
@@ -381,7 +407,7 @@ const SCHOLARS = [
     shortDesc: "Exégeta · Discernimiento",
     country: "🇺🇸",
     photo: "img/jordan-hatfield.jpg",
-    tags: ["trinitario", "doctrina_dios"],
+    tags: ["trinitario", "ex_calvinista", "doctrina_dios"],
     bio: {
       description: "Creador de contenido cristiano enfocado en apologética, exégesis bíblica y discernimiento doctrinal. Su canal Great Light Studios es conocido por sus recursos sobre la Iglesia de Dios Sociedad Misionera Mundial y crítica al calvinismo.",
       education: [
@@ -408,7 +434,7 @@ const SCHOLARS = [
     shortDesc: "Pastor · Enseñanza Bíblica",
     country: "🇨🇴",
     photo: "img/edgar-escobar.jpg",
-    tags: ["pastor", "trinitario", "doctrina_dios"],
+    tags: ["pastor", "trinitario", "calvinista", "doctrina_dios"],
     bio: {
       description: "Ministro protestante, locutor y productor de radio y televisión colombiano. Dedicado a la comunicación bíblica en español, haciendo accesible el estudio de las Escrituras a la audiencia hispana.",
       education: [
@@ -463,7 +489,7 @@ const SCHOLARS = [
     shortDesc: "Manuscritos · NT",
     country: "🇨🇦",
     photo: "img/wesley-huff.webp",
-    tags: ["trinitario", "critica_textual", "cristianismo_primitivo"],
+    tags: ["trinitario", "calvinista", "critica_textual", "cristianismo_primitivo"],
     bio: {
       description: "Apologista cristiano canadiense con más de diez años de experiencia en conferencias y diálogos interreligiosos, especialmente entre cristianismo e islam, en universidades de Norteamérica.",
       education: [
@@ -520,7 +546,7 @@ const SCHOLARS = [
     shortDesc: "Académico · Unitario Bíblico",
     country: "🇺🇸",
     photo: "img/dustin-smith.png",
-    tags: ["academico", "unitario", "doctrina_dios", "cristianismo_primitivo", "griego", "critica_textual"],
+    tags: ["academico", "filosofo", "unitario", "doctrina_dios", "cristianismo_primitivo", "griego", "critica_textual"],
     bio: {
       description: "Erudito del Nuevo Testamento y principal voz académica del unitarismo bíblico contemporáneo. Autor de nueve libros y conductor del podcast Biblical Unitarian. Su trabajo se centra en la cristología de la sabiduría y la teología de la iglesia primitiva. Ha enseñado griego bíblico a nivel de pregrado y posgrado por más de una década.",
       education: [
@@ -529,7 +555,7 @@ const SCHOLARS = [
       ],
       focus: "Cristología, unitarismo bíblico, teología sistemática de la iglesia primitiva, griego bíblico",
       affiliation: "Investigador y Profesor en Spartanburg Methodist College",
-      denomination: "Unitario bíblico",
+      denomination: "Unitario bíblico / Church of God (Abrahamic Faith)",
       books: "A Systematic Theology of the Early Church (2025), Wisdom Christology in the Gospel of John (2024), The AI Critical New Testament (co-autor), The Son of God: Three Views (2014)"
     },
     channel: { name: "Biblical Unitarian Podcast", url: "https://www.youtube.com/@BiblicalUnitarianPodcast" },

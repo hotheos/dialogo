@@ -34,6 +34,7 @@ const I18N = {
     // Category labels for filters
     catRol: 'Rol',
     catPosicion: 'Posición',
+    catSoteriologia: 'Soteriología',
     catEnfoque: 'Tema',
     // Tag labels
     tags: {
@@ -46,11 +47,15 @@ const I18N = {
       mormon: 'Mormón',
       agnostico: 'Agnóstico',
       critico_secular: 'Crítico Secular',
+      calvinista: 'Calvinista',
+      molinista: 'Molinista',
+      ex_calvinista: 'Ex-Calvinista',
+      provisionista: 'Provisionista',
       cristianismo_primitivo: 'Cristianismo Primitivo',
       soteriologia: 'Soteriología',
       critica_textual: 'Crítica Textual',
       ateismo: 'Ateísmo',
-      nueva_era: 'Nueva Era',
+      ex_newage: 'Ex-New Age',
       griego: 'Griego / Hebreo',
       doctrina_dios: 'Doctrina de Dios',
     }
@@ -84,6 +89,7 @@ const I18N = {
     noResultsHint: 'Try other filters or search terms',
     catRol: 'Role',
     catPosicion: 'Position',
+    catSoteriologia: 'Soteriology',
     catEnfoque: 'Topic',
     tags: {
       academico: 'Scholar',
@@ -95,11 +101,15 @@ const I18N = {
       mormon: 'Mormon',
       agnostico: 'Agnostic',
       critico_secular: 'Secular Critic',
+      calvinista: 'Calvinist',
+      molinista: 'Molinist',
+      ex_calvinista: 'Ex-Calvinist',
+      provisionista: 'Provisionist',
       cristianismo_primitivo: 'Early Christianity',
       soteriologia: 'Soteriology',
       critica_textual: 'Textual Criticism',
       ateismo: 'Atheism',
-      nueva_era: 'New Age',
+      ex_newage: 'Ex-New Age',
       griego: 'Greek / Hebrew',
       doctrina_dios: 'Doctrine of God',
     }
@@ -132,6 +142,7 @@ const I18N = {
     noResultsHint: 'Tente outros filtros ou termos de busca',
     catRol: 'Função',
     catPosicion: 'Posição',
+    catSoteriologia: 'Soteriologia',
     catEnfoque: 'Tema',
     tags: {
       academico: 'Acadêmico',
@@ -143,11 +154,15 @@ const I18N = {
       mormon: 'Mórmon',
       agnostico: 'Agnóstico',
       critico_secular: 'Crítico Secular',
+      calvinista: 'Calvinista',
+      molinista: 'Molinista',
+      ex_calvinista: 'Ex-Calvinista',
+      provisionista: 'Provisionista',
       cristianismo_primitivo: 'Cristianismo Primitivo',
       soteriologia: 'Soteriologia',
       critica_textual: 'Crítica Textual',
       ateismo: 'Ateísmo',
-      nueva_era: 'Nova Era',
+      ex_newage: 'Ex-New Age',
       griego: 'Grego / Hebraico',
       doctrina_dios: 'Doutrina de Deus',
     }
@@ -169,7 +184,12 @@ function tCategory(category) {
   const map = {
     'Rol': 'catRol',
     'Posición': 'catPosicion',
+    'Soteriología': 'catSoteriologia',
     'Enfoque': 'catEnfoque',
   };
   return t(map[category] || category);
+}
+
+function tTagDescription(tagKey) {
+  return TAG_CONFIG[tagKey]?.description || '';
 }

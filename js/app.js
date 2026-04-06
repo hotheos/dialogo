@@ -89,7 +89,7 @@
     const cls = size === 'mini' ? 'tag-mini' : 'tag-pill';
     const icon = config.icon ? `<span class="tag-icon">${config.icon}</span>` : '';
     const label = tTag(tagKey);
-    return `<span class="${cls}" style="background:${bgColor}; color:${config.color}">${icon}${label}</span>`;
+    return `<span class="${cls} tag-clickable" data-tagkey="${tagKey}" style="background:${bgColor}; color:${config.color}">${icon}${label}</span>`;
   }
 
   /**
@@ -119,7 +119,7 @@
       </button>
     `;
 
-    const categoryOrder = ['Rol', 'Posición', 'Enfoque'];
+    const categoryOrder = ['Rol', 'Posición', 'Soteriología', 'Enfoque'];
 
     categoryOrder.forEach(category => {
       const tags = categories[category];
@@ -228,7 +228,10 @@
 
     // Bind card clicks
     cardsGrid.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => openModal(card.dataset.id));
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.tag-clickable')) return;
+        openModal(card.dataset.id);
+      });
       card.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
@@ -528,6 +531,68 @@
     document.body.classList.remove('modal-open');
   }
 
+  // ── Tag Description Modal ──────────────────────────────
+  let tagModalEl = null;
+
+  function showTagModal(tagKey) {
+    hideTagModal();
+    const config = TAG_CONFIG[tagKey];
+    const richDesc = TAG_DESCRIPTIONS[tagKey];
+    if (!config || !richDesc) return;
+
+    // Create overlay
+    tagModalEl = document.createElement('div');
+    tagModalEl.className = 'tag-modal-overlay';
+    tagModalEl.innerHTML = `
+      <div class="tag-modal">
+        <button class="tag-modal__close" aria-label="Cerrar">✕</button>
+        <div class="tag-modal__header">
+          <span class="tag-modal__icon">${config.icon || ''}</span>
+          <span class="tag-modal__title" style="color:${config.color}">${tTag(tagKey)}</span>
+          <span class="tag-modal__category">${tCategory(config.category)}</span>
+        </div>
+        <div class="tag-modal__body">
+          ${richDesc}
+        </div>
+      </div>
+    `;
+    document.body.appendChild(tagModalEl);
+
+    // Animate in
+    requestAnimationFrame(() => tagModalEl.classList.add('active'));
+
+    // Close handlers
+    tagModalEl.querySelector('.tag-modal__close').addEventListener('click', hideTagModal);
+    tagModalEl.addEventListener('click', (e) => {
+      if (e.target === tagModalEl) hideTagModal();
+    });
+    document.addEventListener('keydown', tagModalEscHandler);
+  }
+
+  function tagModalEscHandler(e) {
+    if (e.key === 'Escape') hideTagModal();
+  }
+
+  function hideTagModal() {
+    if (tagModalEl) {
+      tagModalEl.classList.remove('active');
+      setTimeout(() => {
+        tagModalEl?.remove();
+        tagModalEl = null;
+      }, 200);
+      document.removeEventListener('keydown', tagModalEscHandler);
+    }
+  }
+
+  // Delegate tag clicks from cards grid and modal
+  function handleTagClick(e) {
+    const tagEl = e.target.closest('.tag-clickable');
+    if (!tagEl) return;
+    e.stopPropagation();
+    const tagKey = tagEl.dataset.tagkey;
+    if (tagKey) showTagModal(tagKey);
+  }
+
   // ── Scroll Effects ───────────────────────────────────────
   function handleScroll() {
     if (window.scrollY > 10) {
@@ -620,6 +685,10 @@
 
     // Scroll effect
     window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Tag description popup (delegated)
+    cardsGrid.addEventListener('click', handleTagClick);
+    modalContent.addEventListener('click', handleTagClick);
   }
 
   // Run when DOM is ready

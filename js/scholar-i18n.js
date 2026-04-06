@@ -220,7 +220,7 @@ const SCHOLAR_I18N = {
         ],
         focus: "Christology, Biblical Unitarianism, systematic theology of the early church, Biblical Greek",
         affiliation: "Researcher and Professor at Spartanburg Methodist College",
-        denomination: "Biblical Unitarian"
+        denomination: "Biblical Unitarian / Church of God (Abrahamic Faith)"
       }
     },
     "james-tabor": {
@@ -551,7 +551,7 @@ const SCHOLAR_I18N = {
         ],
         focus: "Cristologia, unitarismo bíblico, teologia sistemática da igreja primitiva, grego bíblico",
         affiliation: "Pesquisador e Professor no Spartanburg Methodist College",
-        denomination: "Unitário bíblico"
+        denomination: "Unitário bíblico / Church of God (Abrahamic Faith)"
       }
     },
     "james-tabor": {
